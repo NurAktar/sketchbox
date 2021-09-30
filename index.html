@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>sketchbox</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div class="feild">
-      <canvas id="canvas"></canvas></div>
-      <div class="tools">
-        <button onclick="undo_last()" type="button" class="button">undo</button>
-        <button onclick="clear_canvas()" type="button" class="button">Clear</button>
+<head>
+  <meta charset="utf-8">
+  <title>sketchbox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="feild">
+    <canvas id="canvas"></canvas></div>
+    <div class="tools">
+      <button onclick="undo_last()" type="button" class="button">undo</button>
+      <button onclick="clear_canvas()" type="button" class="button">Clear</button>
 
-        <div onclick="change_color(this)" class="color-feild" style="background:red;"></div>
-        <div onclick="change_color(this)" class="color-feild" style="background:green;"></div>
-        <div onclick="change_color(this)" class="color-feild" style="background:blue;"></div>
-        <div onclick="change_color(this)" class="color-feild" style="background:yellow;"></div>
+      <div onclick="change_color(this)" class="color-feild" style="background:red;"></div>
+      <div onclick="change_color(this)" class="color-feild" style="background:green;"></div>
+      <div onclick="change_color(this)" class="color-feild" style="background:blue;"></div>
+      <div onclick="change_color(this)" class="color-feild" style="background:yellow;"></div>
 
-        <input oninput="draw_color = this.value" type="color" class="color-picker">
-        <input oninput="draw_width = this.value" type="range" min="2" max="100" class="pen-range" value="2">
-      </div>
+      <input oninput="draw_color = this.value" type="color" class="color-picker">
+      <input oninput="draw_width = this.value" type="range" min="2" max="100" class="pen-range" value="2">
     </div>
-  </body>
-  <script type="text/javascript" src="script.js"></script>
+  </div>
+</body>
+<script type="text/javascript" src="script.js"></script>
 </html>
