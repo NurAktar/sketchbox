@@ -1,19 +1,19 @@
-body{
-  margin:0;
-  padding:0;
+body {
+  margin: 0;
+  padding: 0;
   font-family: cursive;
-  overflow:;
+  /* overflow: ; */
   background: #313131;
 }
-canvas{
+canvas {
   box-shadow: -1px 5px 9px 6px black;
 }
-.tools{
+.tools {
   display: flex;
   justify-content: center;
   margin-top: 10px;
 }
-.tools .color-feild{
+.tools .color-feild {
   margin: 0 7px;
   width: 40px;
   height: 40px;
@@ -21,12 +21,12 @@ canvas{
   min-height: 40px;
   cursor: pointer;
   display: inline-block;
-  justify-content:space-between;
+  justify-content: space-between;
   align-self: center;
   border-radius: 50%;
-  border:2px solid white;
+  border: 2px solid white;
 }
-.tools .button{
+.tools .button {
   align-self: center;
   width: 100px;
   height: 40px;
@@ -34,12 +34,12 @@ canvas{
   cursor: pointer;
   margin: 0 9px;
 }
-.color-picker{
+.color-picker {
   width: 40px;
   height: 40px;
   align-self: center;
 }
-.pen-range{
+.pen-range {
   align-self: center;
   margin: 0 15px;
 }
