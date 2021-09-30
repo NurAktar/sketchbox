@@ -5,7 +5,7 @@ canvas.height=700;
 let context = canvas.getContext("2d");
 let start_background_color = "white";
 let draw_color = "black";
-let draw_widht = "2";
+var draw_width = 2;
 let is_drawing = false;
 let restore_array=[];
 let index=-1;
@@ -49,17 +49,19 @@ function start(event) {
   context.beginPath();
   context.moveTo(event.pageX - canvas.offsetLeft,event.pageY - canvas.offsetTop);
   context.lineTo(event.pageX - canvas.offsetLeft, event.pageY - canvas.offsetTop);
+  pointX = event.pageX;
+  pointY = event.pageY;
   context.strokeStyle = draw_color;
-  context.lineWidth = draw_widht;
+  context.lineWidth = draw_width;
   context.lineCap = "round";
   context.lineJoin = "round";
-  context.stroke();
+  // context.stroke();
   event.preventDefault();
 }
 function draw(event){
   if(is_drawing){
     context.strokeStyle = draw_color;
-    context.lineWidth = draw_widht;
+    context.lineWidth = draw_width;
     context.lineCap = "round";
     context.lineJoin = "round";
     context.shadowColor = draw_color;
@@ -74,28 +76,42 @@ function stop(event){
     context.closePath();
     is_drawing= false;
   }
+  if ( pointX == event.pageX && pointY == event.pageY) {
+    context.beginPath();
+    context.moveTo(event.pageX - canvas.offsetLeft,event.pageY - canvas.offsetTop);
+    context.lineWidth = 4+parseInt(draw_width);
+    context.closePath();
+    context.stroke();
+  }
+
   event.preventDefault();
-  if(event.type != 'mouseout'){
+  if ( event.type != "mouseout" ){
+    index += 1;
     restore_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
-    index+=1;
   }
 }
+// clear and undo last functions..
 function clear_canvas() {
   index+=1;
-  restore_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
   context.fillStyle = start_background_color;
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.fillRect(0, 0, canvas.width, canvas.height);
+  restore_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
 }
 function undo_last() {
   if ( index <= 0){
-    clear_canvas();
-    index -=1;
-    restore_array.pop();
+    index=-1;
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    restore_array.pop(); // must pop all??? nope now/
   }
-  else {
-    index -=1;
+  else{
+    index-=1;
     restore_array.pop();
     context.putImageData(restore_array[index],0,0);
   }
+}
+function redo_last() {
+  index+=1;
+
 }
